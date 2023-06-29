@@ -7,7 +7,12 @@ use std::cmp::Ordering;
 /// Here below is the `main` function, which gets executed each time that we run the code.
 /// It can take any parameter inside the `()`.
 
-fn game() {
+fn main() {
+    gameWithoutLoop();
+    gameWithLoop();
+}
+
+fn gameWithoutLoop () {
     /// It may seem a function, but actually [`println!`] is a macro. We distinguish macros thanks
     /// to the `!` at the end of the name
 
@@ -69,7 +74,7 @@ fn game() {
     }
 }
 
-fn main () {
+fn gameWithLoop () {
     println!("Hello World! We'll now play a little game...");
     let randomNumber = rand::thread_rng().gen_range(1..=10);
 
@@ -84,7 +89,7 @@ fn main () {
 
         println!("So, you inserted {guestGuess}");
 
-        let mut guestGuess: i32 = guestGuess.trim().parse().expect("Hey, that wasn't a number! Insert a number next time, please");
+        let guestGuess: i32 = guestGuess.trim().parse().expect("Hey, that wasn't a number! Insert a number next time, please");
 
         match guestGuess.cmp(&randomNumber) {
             Ordering::Less => println!("Ew, that's small"),
