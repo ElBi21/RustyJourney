@@ -30,7 +30,7 @@ fn gameWithoutLoop () {
 
     /// Here we are using a method from the `io` library. We can also use a method from any library
     /// without importing by doing something among these lines:
-    /// ```
+    /// ```rust
     /// std::io::stdin
     /// ```
     /// This way we can use a particular method of a library without the need of importing the whole
