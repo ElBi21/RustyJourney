@@ -6,6 +6,11 @@
 ## I'm sorry... what?
 Yeeeeeah, who asked, right? No one, I know. But I wanted to learn Rust,
 and I thought of making this repo. I hope it will be helpful for someone.
+Each file is commented with (sometimes unnecessary) docstring (I like them
+because of the formatting possibilities), so that each step is documented.
+
+This repo is based on the [Rust official book](https://doc.rust-lang.org/book).
+Go check it out if something is missing.
 
 ## Journey's journal
 
