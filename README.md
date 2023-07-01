@@ -15,7 +15,7 @@ and I thought of making this repo. I hope it will be helpful for someone.
 
 ---
 
-### 01 - Basics
+## 01 - Basics
 
 **Topics covered**:
 - Variables (mutability with `mut`, immutability);
@@ -77,3 +77,46 @@ let mut user_input: i32 = match guestGuess.trim().parse() {
     println!("Hey, that wasn't a number! Insert a number next time, please"); 
 }
 ```
+ - Constants (`const` keyword);
+ - Shadowing with and without scopes;
+ - Scalar types: types that represent a single value. There are 4 built-in types:
+   - integers;
+   - floating-point numbers;
+   - booleans;
+   - characters.
+
+Regarding the `integers`:
+
+| length       | signed  | unsigned |
+|--------------|---------|----------|
+| 8-bit        | `i8`    | `u8`     |
+| 16-bit       | `i16`   | `u16`    |
+| 32-bit       | `i32`   | `u32`    |
+| 64-bit       | `i64`   | `u64`    |
+| architecture | `isize` | `usize`  |
+
+- `architecture` means that the compiler adapts the numbers based
+on the architecture of the computer that is running the code.
+- Numbers can be written as follows, depending on the base of the number:
+
+| Literals    | Example      |
+|-------------|--------------|
+| Decimal     | `54_654`     |
+| Hexadecimal | `0x4F5D`     |
+| Octal       | `0o4523`     |
+| Binary      | `0b101_1010` |
+| Byte        | `b'A'`       |
+
+- `_` can be used to help visualize the number. The computer doesn't read them;
+- Overflows can occur, and if they do occur when building, the application
+will transform the number into a **two's complement** number:
+for instance, let the situation below: `DOES_OVERFLOW` will be wrapped
+and become `1`; similarly, `258`will become `2`, and so on and
+so forth...
+
+```rust
+const DOES_NOT_OVERFLOW: u32 = 23;
+const DOES_OVERFLOW: u32 = 257;
+```
+
+ - Floating points (handled as `IEEE 754` numbers, there is `f32` and `f64`); 
