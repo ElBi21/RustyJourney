@@ -8,11 +8,11 @@ use std::cmp::Ordering;
 /// It can take any parameter inside the `()`.
 
 fn main() {
-    gameWithoutLoop();
-    gameWithLoop();
+    game_without_loop();
+    game_with_loop();
 }
 
-fn gameWithoutLoop () {
+fn game_without_loop() {
     /// It may seem a function, but actually [`println!`] is a macro. We distinguish macros thanks
     /// to the `!` at the end of the name
 
@@ -24,8 +24,8 @@ fn gameWithoutLoop () {
     /// Inside this variable we created a new instance of a [`String`] (similarly to `Java`). By
     /// itself, the string is empty
 
-    let randomNumber = rand::thread_rng().gen_range(1..=100);
-    let mut guestGuess = String::new();
+    let random_number = rand::thread_rng().gen_range(1..=10);
+    let mut guest_guess = String::new();
 
 
     /// Here we are using a method from the `io` library. We can also use a method from any library
@@ -52,10 +52,10 @@ fn gameWithoutLoop () {
     /// exclusive method of the `Err` variant.
 
     io::stdin()
-        .read_line(&mut guestGuess)
+        .read_line(&mut guest_guess)
         .expect("Geez, I couldn't read it!");
 
-    println!("So, you inserted {guestGuess}, huh? But will it be right?\nThe secret number was {randomNumber}");
+    println!("So, you inserted {guest_guess}, huh? But will it be right?\nThe secret number was {random_number}");
 
     /// If we try to run the program until here, everything will go fine. But once we'll pass to the
     /// `match` part below, we'll get an error. This happens because we are passing a [`String`] to
@@ -64,34 +64,45 @@ fn gameWithoutLoop () {
     /// (the same of `i32` but with 64 bits), and much more.
     ///
     /// In order to convert the string we have to do the following:
+    let guest_guess: i32 = guest_guess.trim().parse().expect("Hey, that wasn't a number! Insert a number next time, please");
 
-    let mut guestGuess: i32 = guestGuess.trim().parse().expect("Hey, that wasn't a number! Insert a number next time, please");
-
-    match guestGuess.cmp(&randomNumber) {
+    match guest_guess.cmp(&random_number) {
         Ordering::Less => println!("Ew, that's small"),
         Ordering::Equal => println!("YOO! You guessed it!"),
         Ordering::Greater => println!("Oh boy, that's a big number")
     }
 }
 
-fn gameWithLoop () {
+fn game_with_loop() {
     println!("Hello World! We'll now play a little game...");
-    let randomNumber = rand::thread_rng().gen_range(1..=10);
+    let random_number = rand::thread_rng().gen_range(1..=10);
 
     loop {
         println!("Please, input your guess: ");
 
-        let mut guestGuess = String::new();
+        let mut guest_guess = String::new();
 
         io::stdin()
-            .read_line(&mut guestGuess)
+            .read_line(&mut guest_guess)
             .expect("[ E ] Geez, I couldn't read it!");
 
-        println!("So, you inserted {guestGuess}");
+        println!("So, you inserted {guest_guess}");
 
-        let guestGuess: i32 = guestGuess.trim().parse().expect("Hey, that wasn't a number! Insert a number next time, please");
+        let guest_guess: i32 = match guest_guess.trim().parse() {
 
-        match guestGuess.cmp(&randomNumber) {
+            /// We can use `match` to make a `try {} catch {}` block. If it's possible to do an
+            /// operation then the `Ok()`block gets executed, else the `Err()` block gets executed.
+            /// The `_` on the `Err()` block stands as a jolly: it's like the `*`, it means that
+            /// the `Err()` block will get executed when any error arises.
+
+            Ok(num) => num,
+            Err(_) => {
+                println!("Hey, that wasn't a number! Insert a number next time, please");
+                continue;
+            }
+        };
+
+        match guest_guess.cmp(&random_number) {
             Ordering::Less => println!("Ew, that's small"),
             Ordering::Equal => {
                 println!("YOO! You guessed it!");

@@ -68,3 +68,12 @@ let my_number: i32 = 21;
 ---
 
 ## 02 - Data types
+
+ - Use of `match` to handle errors, similarly to a `try {} catch {}` block:
+```rust
+let mut user_input: i32 = match guestGuess.trim().parse() {
+  Ok(num) => num,
+  Err(_) => {
+    println!("Hey, that wasn't a number! Insert a number next time, please"); 
+}
+```
