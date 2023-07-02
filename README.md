@@ -125,3 +125,12 @@ const DOES_OVERFLOW: u32 = 257;
 ```
 
  - Floating points (handled as `IEEE 754` numbers, there is `f32` and `f64`); 
+ - Operations:
+   - Addition: `x + y`;
+   - Subtraction: `x - y`;
+   - Multiplication: `x * y`;
+   - Division: `x / y` (if `x` is negative then we talk about truncation);
+   - Remainder: `%`;
+ - Booleans (`true` and `false`, the type is `bool`);
+ - Characters (`char`);
+ - 

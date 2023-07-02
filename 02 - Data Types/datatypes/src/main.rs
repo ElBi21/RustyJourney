@@ -55,4 +55,43 @@ fn main() {
     /// expressed with `f32` or `f64`, and are formatted as `IEEE 754` numbers.
 
     let cute_floating_number: f32 = 46.432;
+
+    /// Rust also supports arithmetic operations. There are 5 built-in operations: addition,
+    /// subtraction, multiplication, division and remainder. The division can act both as a normal
+    /// division and as truncation.
+
+    let w: i32 = 3;
+    let x: i32 = 40;
+    let y: i32 = 36;
+    let z: i32 = -4;
+
+    let an_addition: i32 = x + y;
+    let a_subtraction: i32 = x - y;
+    let a_multiplication: i32 = x * y;
+    let a_division: i32 = x / y;
+    let a_truncation: i32 = z / w;
+    let a_remainder: i32 = x % y;
+
+    println!("Addition: {an_addition}\n\
+              Subtraction: {a_subtraction}\n\
+              Multiplication: {a_multiplication}\n\
+              Division: {a_division}\n\
+              Truncation: {a_truncation}\n\
+              Remainder: {a_remainder}");
+
+    /// Booleans are either `true` or `false`
+
+    let t: bool = true;
+    let f: bool = false;
+
+    /// Characters are also a built-in type in Rust. There is a difference between string and
+    /// character: the character is a 4 bytes large value, thus it can represent more than an ASCII
+    /// character (in the sense that they support Unicode characters, but still each variable of
+    /// type `char` holds only one character). They are written as follows (notice the single quote
+    /// mark: for characters we should use single quote marks, while for strings we use double
+    /// quote marks):
+
+    let my_char: char = 'C';
+
+
 }
