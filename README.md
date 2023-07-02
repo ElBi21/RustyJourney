@@ -133,4 +133,45 @@ const DOES_OVERFLOW: u32 = 257;
    - Remainder: `%`;
  - Booleans (`true` and `false`, the type is `bool`);
  - Characters (`char`);
- - 
+ - Tuples' length is immutable, but can have multiple types:
+```rust
+let tuple: (i32, f32, char, &str) = (51, 33.54234, 'H', "Wow");
+
+// Accessing to one item
+let an_item: f32 = tuple.1;
+let another_item: &str = tuple.3;
+
+// Unpacking
+let (w, x, y, z) = tuple;
+```
+ - Arrays are similar to tuples, but all of their elements must be of the
+same type:
+```rust
+let array: [i32; 5] = [2, 54, 3, 6, 7];
+
+// Accessing to one item
+let an_item: i32 = array[1];
+let another_item: i32 = array[3];
+```
+
+ - Functions (with `fn`):
+```rust
+fn function_name (parameter1: type1, parameter2: type2, [...]) -> return_type {
+    // Code goes here...
+    
+    // If the function has to return something then a value
+    // can be returned with the return keyword
+    return some_value;
+}
+```
+ - Functions are called based on their names:
+```rust
+let mut a_number: i32 = 0;
+a_number = a_function(a_number, 40);
+println!("I got {:?}", a_number);
+
+fn a_function (x: i32, y: i32) -> i32 {
+    let result: i32 = x + y;
+    return result;
+}
+```

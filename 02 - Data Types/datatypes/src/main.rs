@@ -93,5 +93,87 @@ fn main() {
 
     let my_char: char = 'C';
 
+    /// We can also use tuples and arrays in Rust, which are called compound types. Inside a tuple
+    /// or an array we can use whatever types we want. Tuples though have a fixed length, as well
+    /// as arrays. For instance:
 
+    let tuple: (i32, &str, char, f32) = (43, "Hey there", 'S', 56.3248);
+
+    /// A tuple (as well as an array) can be unpacked (in Rust this process is called
+    /// "destructuring") in multiple variables as in the following:
+
+    let (a, b, c, d) = tuple;
+
+    println!("We got '{b}' and {d}, but also {a} and {c}");
+
+    /// To access an element of the tuple without unpacking we can use the notation
+    /// `tuple_variable.index`
+
+    let e: f32 = tuple.3;
+
+    println!("Without unpacking I got {e}");
+
+    /// Arrays are similar to tuples, because they also have a fixed length. Unlike tuples though,
+    /// arrays' elements must be of a same common type. The difference between arrays and tuples is
+    /// that arrays are saved in the stack, while tuples in the heap. Arrays are useful when we have
+    /// a collection of data of the same type and with a fixed length. An array is defined as
+    /// follows:
+
+    let an_array: [i32; 4] = [1, 2, 3, 4];
+    let another_array: [&str; 5] = ["Hey", "Hi there", "Hi", "Good morning", "Yo"];
+
+    /// We can also do something similar to a list comprehension of Python in Rust with arrays: for
+    /// instance, the following array will produce an array of 5 elements, where each element is a 0
+
+    let zero_array: [i32; 5] = [0; 5];
+
+    /// In order to print an array we have to do the following
+
+    println!("{:?}", zero_array);
+
+    /// In order to access an element of the array, we can do as the following:
+
+    let a: &str = another_array[3];
+
+    println!("{a}");
+
+    /// Calling a function...
+
+    let my_value: i32 = new_function(4, 13);
+    println!("We got {:?}", my_value);
+}
+
+/// In Rust we can create new function via the `fn` keyword. The format to respect is the following:
+/// ```rust
+/// fn function_name (parameter1: type1, parameter2: type2, [...] ) {
+///     // Code...
+/// }
+/// ```
+/// If a function must return a value we have to indicate the type of the result through an arrow
+/// like `->`. The syntax then becomes the following:
+/// ```rust
+/// fn function_name ([...]) -> return_type {
+///     // Code...
+/// }
+/// ```
+/// The return value is either the last value explicitly written or the one given by the `return`
+/// keyword.
+
+fn new_function (x: i32, y: i32) -> i32 {
+    /// In Rust there are **statements** and **expressions**:
+    /// - a **statement** is an instruction that doesn't hold any return value;
+    /// - an **expression** evaluates an actual value, returning it.
+    /// Creating a variable, for instance, is a statement, while summing two numbers is an
+    /// expression
+
+    // This is a statement...
+    let mut result: i32 = 0;
+
+    {
+        // ...and this is an expression
+        result = x + y - (x * (y - 2 * x));
+    }
+
+    println!("{result}");
+    return result;
 }
