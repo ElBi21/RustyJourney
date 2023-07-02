@@ -120,8 +120,8 @@ and become `1`; similarly, `258`will become `2`, and so on and
 so forth...
 
 ```rust
-const DOES_NOT_OVERFLOW: u32 = 23;
-const DOES_OVERFLOW: u32 = 257;
+const DOES_NOT_OVERFLOW: u32 = 23;    // output as 23
+const DOES_OVERFLOW: u32 = 257;       // output as 1 (257 - 256)
 ```
 
  - Floating points (handled as `IEEE 754` numbers, there is `f32` and `f64`); 
