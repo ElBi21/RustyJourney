@@ -130,7 +130,7 @@ const DOES_OVERFLOW: u32 = 257;
    - Subtraction: `x - y`;
    - Multiplication: `x * y`;
    - Division: `x / y` (if `x` is negative then we talk about truncation);
-   - Remainder: `%`;
+   - Remainder: `x % y`;
  - Booleans (`true` and `false`, the type is `bool`);
  - Characters (`char`);
  - Tuples' length is immutable, but can have multiple types:
