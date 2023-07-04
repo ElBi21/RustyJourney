@@ -141,6 +141,64 @@ fn main() {
 
     let my_value: i32 = new_function(4, 13);
     println!("We got {:?}", my_value);
+
+    control_flow(2, true);
+
+    let condition: bool = true;
+    let new_parameter: i32 = if condition { 4 } else { 5 };
+
+    println!("The condition is {:?}, thus we got {:?}", condition, new_parameter);
+
+    /// In Rust there are three ways to do a loop: either with `loop`, with `for` or with `while`:
+    /// - `loop`: it will run what's inside it for an indefinite number of times, until we
+    ///           explicitely tell it to stop;
+    /// - `while`: it loops until the condition is not met anymore;
+    /// - `for`: lets us iterate through a collection of items;
+
+    let mut particular_item: i32 = 0;
+
+    loop {
+        if particular_item == 100 {
+            break;
+        }
+        println!("Item: {:?}", particular_item);
+        particular_item += 1;
+    }
+
+    /// We can also use a `loop` inside a variable and return whatever value is followed by the
+    /// `break` keyword
+    let result = loop {
+        particular_item -= 1;
+
+        if particular_item == 50 {
+            break particular_item * 3 + 20;
+        }
+    };
+    println!("We got {result}");
+
+    /// A `loop` loop can be customized with a label, such as in the following:
+    'external_loop: loop {
+        let mut another_item: i32 = 5;
+        loop {
+            another_item -= 1;
+            if another_item == 0 {
+                break 'external_loop;
+            }
+        }
+    }
+
+    while particular_item > 1 {
+        particular_item -= 1;
+    }
+
+    let my_new_array: [i32; 10] = [423, 54, 23, 746, 325, 654, 34, 345, 155, 0452];
+    for item in my_new_array {
+        println!("Now we got {item}");
+    }
+
+    for item in (1..7).rev() {
+        println!("{:?}", item + 4)
+    }
 }
 
 /// In Rust we can create new function via the `fn` keyword. The format to respect is the following:
@@ -176,4 +234,20 @@ fn new_function (x: i32, y: i32) -> i32 {
 
     println!("{result}");
     return result;
+}
+
+fn control_flow (number: i32, boolean: bool) {
+    /// We can use `if` statements to check some conditions and do specific actions when such
+    /// conditions are met
+    if number > 4 {
+        println!("Nice!")
+    } else {
+        println!("Wow!")
+    }
+
+    if !boolean {
+        println!("Additionally, boolean was false!")
+    } else if boolean && number < 3 {
+        println!("Special line!")
+    }
 }

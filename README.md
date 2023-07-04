@@ -175,3 +175,63 @@ fn a_function (x: i32, y: i32) -> i32 {
     return result;
 }
 ```
+ - Conditions and control flow
+```rust
+if condition {
+    // Some code...
+} else if condition {
+    // Some other code...
+} else {
+    // Other code...
+}
+```
+ - Can also be done inside a variable:
+```rust
+let my_condition: bool = true;
+let a_number: i32 = if my_condition { 4 } else { 5 };
+```
+- Loops with `loop`, `while` and `for`:
+  - `loop`: executes a block until it gets stopped by a `break` keyword.
+   It can be labeled and stopped by calling `break` and the label
+    ```rust
+    let mut counter: i32 = 100;
+    
+    'my_loop: loop {
+       let a_value: i32 = 10;
+        
+       loop {
+           if counter == 50 && a_value == 10 {
+               break 'my_loop;
+           } else {
+               counter -= 1;
+           }
+       }
+    }
+    ```
+  - `while`: executes a block until the initial condition is not met anymore
+    ```rust
+    let index: i32 = 100;
+    while index >= 0 {
+      index -= 1;
+    }
+    ```
+  - `for`: executes the block for each item in the iterable
+    ```rust
+    let my_array: [i32; 5] = [34, 65, 236, 8675, 343];
+    for item in my_array {
+        println!("{:?}", item + 2);
+    }
+    
+    // or...
+    
+    for index in (1..16) {
+        // Do something
+    }
+    
+    // We can add the rev() function to reverse the tuple
+    
+    for index in (0..400).rev() {
+    
+    }
+    ```
+    
