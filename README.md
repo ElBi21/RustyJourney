@@ -231,7 +231,10 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
     // We can add the rev() function to reverse the tuple
     
     for index in (0..400).rev() {
-    
+        // Some code
     }
     ```
-    
+---
+
+## 03 - Ownership
+
