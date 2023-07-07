@@ -62,7 +62,102 @@ fn main() {
      * doesn't happen with Strings, since they are mutable. We can't reserve an indefinite space in
      * the memory for a string that "might" change. In order to implement it, we need to reserve
      * some space in the memory, where the size is not known at compile time, and this size must be
-     * big enough to hold all the contents of a possibly mutated string.
+     * big enough to hold all the contents of a possibly mutated string. This means that we have to
+     * request from the memory allocator some space in the memory and that we have to return (or
+     * free) the memory once we're done with the String. The request for some space in memory is
+     * done via the call of String::from. But what about the second part? How do we free the memory?
      *
-    */
+     * In languages where there is a garbage collector we don't have to worry about the memory,
+     * while in languages where there is no garbage collector we have to free the memory manually.
+     * Each memory allocation should correspond with one memory free. How is it done in Rust?
+     *
+     * Generally, memory becomes free after the variable that owns that place in memory goes out of
+     * scope. For instance, let us consider the following example:
+     */
+
+    {
+        let a_funny_string: String = String::from("Lol!");
+
+        println!("{}", a_funny_string)
+    }
+
+    /* After the scope, the string a_funny_string gets deleted from the memory, and this is done via
+     * an implicit function called drop. Such function can't be called explicitly (it can be done
+     * through the use of the mem library, but we won't use it for now)
+     */
+
+    // Multiple variables can interact between each other. For instance:
+    {
+        let value_one: i32 = 3243;
+        let value_two: i32 = value_one;
+    }
+
+    /* In this example we made two variables, we set one as a concrete value, while the other is set
+     * as a copy of the first one. All of this happens into the stack, because of the knows, fixed
+     * size of the two numbers. This doesn't happen with Strings though. Let's make an example and
+     * look why:
+     */
+
+    {
+        let string_one: String = String::from("Hey");
+        let string_two: String = string_one;
+    }
+
+    /* We might think that this is the same of what happened with value_one and value_two, but
+     * that's not quite right: we can explain it by showing how a string is saved inside the memory:
+     *
+     *              Stack                       Heap
+     *      ┌──────────┬───────┐         ┌───────┬───────┐
+     *      │   name   │ value │         │ index │ value │
+     *      ├──────────┼───────┤         ├───────┼───────┤
+     *      │  pointer │ --------------->│   0   │   H   │
+     *      ├──────────┼───────┤         ├───────┼───────┤
+     *      │  length  │   3   │         │   1   │   e   │
+     *      ├──────────┼───────┤         ├───────┼───────┤
+     *      │ capacity │   3   │         │   2   │   y   │
+     *      └──────────┴───────┘         └───────┴───────┘
+     *
+     * Normally a String is saved this way: on the stack are saved a pointer to the heap where the
+     * String begins, the length of the string and the capacity (how many bytes the allocator gave
+     * to the string). When we assign string_one to string_two, the following happens:
+     *
+     *       Stack (string_one)                 Heap
+     *      ┌──────────┬───────┐         ┌───────┬───────┐
+     *      │   name   │ value │         │ index │ value │
+     *      ├──────────┼───────┤         ├───────┼───────┤
+     *      │  pointer │ --------------->│   0   │   H   │
+     *      ├──────────┼───────┤    |    ├───────┼───────┤
+     *      │  length  │   3   │    |    │   1   │   e   │
+     *      ├──────────┼───────┤    |    ├───────┼───────┤
+     *      │ capacity │   3   │    |    │   2   │   y   │
+     *      └──────────┴───────┘    |    └───────┴───────┘
+     *                              |
+     *       Stack (string_two)     |
+     *      ┌──────────┬───────┐    |
+     *      │   name   │ value │    |
+     *      ├──────────┼───────┤    |
+     *      │  pointer │ -----------|
+     *      ├──────────┼───────┤
+     *      │  length  │   3   │
+     *      ├──────────┼───────┤
+     *      │ capacity │   3   │
+     *      └──────────┴───────┘
+     *
+     * We don't create another copy of the value in the memory because it would be too much
+     * expensive in terms of memory usage. But how would the free process work? We said that when a
+     * variable goes out of scope, then the compiler calls automatically the drop function, cleaning
+     * the memory. Though both string_one and string_two point to the same point in memory. We can't
+     * also free the memory two times, otherwise we could risk of corrupting out memory (corruption
+     * may happen when trying to free a place in memory that is already free; also called "double
+     * free" error). To ensure that memory gets cleaned safely, after the line
+     *
+     *      let string_two: String = string_one;
+     *
+     * then Rust doesn't consider anymore string_one as valid. If we tried to access to it, we would
+     * get a compile error. What Rust does seems similar to a deep copy for all those items with
+     * fixed length and similar to a shallow copy for all the items with variable length. The truth
+     * is that a copy is done for elements with fixed length, while a move operation is done for
+     * elements with variable length (that's what happened with the strings: string_one was moved
+     * into string_two).
+     */
 }
