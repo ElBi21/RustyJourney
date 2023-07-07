@@ -17,6 +17,7 @@ Go check it out if something is missing.
 **Table of contents**
 1. [01 - Basics](#01---Basics)
 2. [02 - Data types](#02---data-types)
+3. [03 - Ownership](#03---ownership)
 
 ---
 
