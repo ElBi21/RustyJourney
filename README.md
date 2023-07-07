@@ -238,3 +238,10 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
 
 ## 03 - Ownership
 
+ - Differences between **heap** and **stack** and how variables get saved;
+ - The 3 **ownership** rules:
+   - Each value has an **owner**;
+   - There is only one owner at a time;
+   - Whenever the owner gets out of scope, the value is dropped;
+ - Variable scoping;
+ - 
