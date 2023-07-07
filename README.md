@@ -245,4 +245,4 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
    - Whenever the owner gets out of scope, the value is dropped;
  - Variable scoping;
  - Memory and allocation:
-   - Variables interaction with `move`
+   - Variables interaction with `move`;
