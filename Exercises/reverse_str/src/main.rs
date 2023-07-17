@@ -1,6 +1,6 @@
 fn main() {
-    // let to_reverse: String = String::from("La patata è carina");
-    let to_reverse: String = String::from("uüu");
+    let to_reverse: String = String::from("La patata è carina");
+    // let to_reverse: String = String::from("uüu");
 
     let mut result: String = String::new();
 
