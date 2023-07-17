@@ -6,12 +6,14 @@
       <sourceFolder url="file://$MODULE_DIR$/01 - Basics/basics/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/02 - Data Types/datatypes/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/03 - Ownership/ownership/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Exercises/reverse_str/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/01 - Basics/basica/target" />
       <excludeFolder url="file://$MODULE_DIR$/01 - Basics/basics/target" />
       <excludeFolder url="file://$MODULE_DIR$/01 - Basics/venv" />
       <excludeFolder url="file://$MODULE_DIR$/02 - Data Types/datatypes/target" />
       <excludeFolder url="file://$MODULE_DIR$/03 - Ownership/ownership/target" />
+      <excludeFolder url="file://$MODULE_DIR$/Exercises/reverse_str/target" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 (RustyJourney)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
