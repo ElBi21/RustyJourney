@@ -18,6 +18,8 @@ Go check it out if something is missing.
 1. [01 - Basics](#01---Basics)
 2. [02 - Data types](#02---data-types)
 3. [03 - Ownership](#03---ownership)
+4. [Exercises](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/Exercises.md)
+    - [E01](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/reverse_str) - `reverse_str` (Difficulty: ⭐)
 
 ---
 
