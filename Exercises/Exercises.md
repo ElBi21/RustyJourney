@@ -13,4 +13,4 @@ fn main() {
 }
 ```
 
- - [**Solution (link to the file)**]()
+ - [**Solution (link to the file)**](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/reverse_str)
