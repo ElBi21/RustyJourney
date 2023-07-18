@@ -264,7 +264,7 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
 // Mutable reference
 {
     let mut another_String = String::from("Hey hey hey!");
-    let my_mut_ref: &mut String = &mut another_string
+    let my_mut_ref: &mut String = &mut another_string;
 }
 ```
  - Dangling pointers
