@@ -249,3 +249,22 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
  - Variable scoping;
  - Memory and allocation:
    - Variables interaction with `move`;
+ - Deep copy with the `clone()` method;
+ - Stack-Only Data copies and the `Copy` trait;
+ - Functions and ownership;
+ - References:
+   - **Mutable** and **Immutable** references
+```rust
+// Immutable reference
+{
+    let a_string: String = String::from("Hey there");
+    let my_ref: & String = a_string;
+}
+
+// Mutable reference
+{
+    let mut another_String = String::from("Hey hey hey!");
+    let my_mut_ref: &mut String = &mut another_string
+}
+```
+ - 
