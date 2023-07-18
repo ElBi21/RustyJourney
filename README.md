@@ -267,4 +267,4 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
     let my_mut_ref: &mut String = &mut another_string
 }
 ```
- - 
+ - Dangling pointers
