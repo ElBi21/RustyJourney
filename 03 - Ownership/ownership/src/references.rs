@@ -1,3 +1,5 @@
+use std::io::Read;
+
 /// When passing variables into functions, we usually lose the ownership on them, making them
 /// unavailable after the ownership gets lost, unless they get saved in the stack. We can sort of
 /// avoid this losing mechanism by using references. A **reference** is like a pointer that points
@@ -57,21 +59,103 @@ pub(crate) fn references () {
      *    or one mutable reference of it;
      *  - References must always be valid, otherwise a dangling pointer would be made.
      */
+
+    /// Simple function illustrating how references work
+    fn get_length(string: &String) -> usize {
+        return string.len();
+    }
+
+    /// Simple function that lets us observe the behaviour of `&mut`
+    fn edit_string(string: &mut String) {
+        string.push_str("[NEW CONTENT]");
+    }
+
+    // Function that explains the concept of **dangling pointers**
+    /* fn dangling_pointers() -> &String {
+        let string: String = String::from("I'm a weird string");
+
+        return &string;
+    } */
+
+    /* The Slice type allows us to refer to a contiguous sequence of elements in a collection,
+     * rather than the whole collection. For instance, we want to make a function that returns the
+     * first word in a string with spaces (so the word before the first space), but if there are no
+     * spaces, then we want to return the whole string. Let's see how to do that:*/
+
+    fn first_word_before_space(string: &String) -> usize {
+        /* Since we can't really iterate on a string like in Python, we have to find another way:
+         * for instance, we could try to return the index of the last space. We can do so by
+         * transforming our string into an array of bytes, and then we could iterate on the array
+         * and check for the first space
+         * */
+
+        let as_bytes = string.as_bytes();
+
+        // Here we convert the bytes array into an iterator, and then we enumerate the items
+        for (i, &item) in as_bytes.iter().enumerate() {
+            // If the item is a space, we then proceed to return its index
+            if item == b' ' {
+                return i;
+            }
+        }
+
+        // Otherwise we can just return the length of the string
+        return string.len()
+    }
+
+    /* It's important to say that each element of .iter().enumerate() is a tuple with the following
+     * form:
+     *
+     * (index, &item)
+     *
+     * The index is a variable that can be owned, while the item is a reference.
+     *
+     * Let us now try to call the function with any string:
+     */
+
+    {
+        let mut a_string: String = String::from("Here I am, standing in front of you");
+
+        let word_index: usize = first_word_before_space(&a_string);
+
+        a_string.clear();
+
+        println!("The index of the first space is {:?}", word_index);
+
+        /* The problem with the function is that the index is "valid" for the string that we set
+         * before, but if the string changes, then the index is not coherent anymore.*/
+    }
+
+    /* There is a way to select a part of a string, just like in Python. The way to do it is via
+     * accessing to the reference to the string and then specify the index of the parts of the
+     * string that we want. An example follows:
+     */
+
+    {
+        let a_string: String = String::from("Hello, my guy");
+
+        let part_one: &str = &a_string[0..5];
+        let part_two: &str = &a_string[10..13];
+
+        println!("{:?} and {:?}", part_one, part_two)
+    }
+
+    /* The slicing indexes follow the rule
+     *
+     *     [beginning_index..(ending_index + 1)]
+     *
+     * We can omit the indexes, meaning that they will be equal to 0.
+     */
+
+    {
+        let a_string: String = String::from("Hey hey hey! Who do we have here?");
+
+        let example_one: &str = &a_string[..3];
+        let example_two: &str = &a_string[4..a_string.len()];
+        let example_three: &str = &a_string[13..];
+
+        println!("{:?}\n{:?}\n{:?}", example_one, example_two, example_three);
+    }
+
+
 }
-
-/// Simple function illustrating how references work
-fn get_length(string: &String) -> usize {
-    return string.len();
-}
-
-/// Simple function that lets us observe the behaviour of `&mut`
-fn edit_string(string: &mut String) {
-    string.push_str("[NEW CONTENT]");
-}
-
-// Function that explains the concept of **dangling pointers**
-/* fn dangling_pointers() -> &String {
-    let string: String = String::from("I'm a weird string");
-
-    return &string;
-} */
