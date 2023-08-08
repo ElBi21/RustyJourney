@@ -157,5 +157,28 @@ pub(crate) fn references () {
         println!("{:?}\n{:?}\n{:?}", example_one, example_two, example_three);
     }
 
+    /* We don't have this problem with ASCII characters, but the indexes specified in the slice must
+     * occur at valid UTF-8 characters boundaries. This, again, is not a problem with ASCII, but it
+     * can be a problem with multibyte characters.
+     *
+     * Now the function first_word_before_space() can be rewritten without problems
+     */
+
+    fn first_word_with_slicing (my_str: &String) -> &str {
+        let bytes_array: &[u8] = my_str.as_bytes();
+        for (i, &item) in bytes_array.iter().enumerate() {
+            if item == b' ' {
+                return &my_str[0..i];
+            }
+        }
+
+        return my_str;
+    }
+
+    {
+        let a_string: String = String::from("My potato is a beautiful potato <3");
+        println!("{:?}", first_word_with_slicing(&a_string))
+    }
+
 
 }
