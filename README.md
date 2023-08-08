@@ -20,7 +20,8 @@ be helpful if you want to study offline as well.
 1. [01 - Basics](#01---Basics)
 2. [02 - Data types](#02---data-types)
 3. [03 - Ownership](#03---ownership)
-4. [Exercises](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/Exercises.md)
+4. [04 - Structs](#04---structs)
+5. [Exercises](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/Exercises.md)
     - [E01](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/reverse_str) - `reverse_str` (Difficulty: ⭐)
 
 ---
@@ -271,3 +272,7 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
 ```
  - Dangling pointers
  - The `Slice` type
+
+---
+
+## 04 - Structs
