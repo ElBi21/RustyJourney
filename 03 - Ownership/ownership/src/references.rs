@@ -214,8 +214,18 @@ pub(crate) fn references () {
 
     /* Previously we had on first_word_with_slicing() that the parameter word was a reference to a
      * String, having thus `word: &String`. Now it is `word: &str`, but why? That's because &str
-     * allows for both references of Strings and sliced strings. */
+     * allows for both references of Strings and sliced strings.
+     *
+     * There are multiple elements that can work with the concept of slicing. For instance, arrays
+     * are an example:
+     */
 
+    {
+        let my_array: [i32; 5] = [1, 2, 3, 4, 5];
 
+        let a_slice: &[i32] = &my_array[1..3];
 
+        println!("{:?} | {:?}", &my_array[1..3], a_slice);
+        assert_eq!(&my_array[1..3], a_slice);
+    }
 }
