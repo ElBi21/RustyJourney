@@ -164,7 +164,7 @@ pub(crate) fn references () {
      * Now the function first_word_before_space() can be rewritten without problems
      */
 
-    fn first_word_with_slicing (my_str: &String) -> &str {
+    fn first_word_with_slicing (my_str: &str) -> &str {
         let bytes_array: &[u8] = my_str.as_bytes();
         for (i, &item) in bytes_array.iter().enumerate() {
             if item == b' ' {
@@ -179,6 +179,43 @@ pub(crate) fn references () {
         let a_string: String = String::from("My potato is a beautiful potato <3");
         println!("{:?}", first_word_with_slicing(&a_string))
     }
+
+    // We can't although edit a_string and then reuse the function. Look at the next code snippet:
+
+    /*
+    {
+        let mut a_string: String = String::from("Hello there");
+
+        let the_word: &str = first_word_with_slicing(&a_string);
+
+        a_string.clear();
+
+        println!("{:?}", the_word);
+    }
+    */
+
+    /* If we tried to execute that code snippet, we would get an error. This happens because there
+     * is first an immutable borrow when we call the first_word_with_slicing(), then a mutable
+     * borrow with a_string.clear(). Since there can be only one immutable or mutable borrow at a
+     * time, then we would get an error.
+     *
+     * String literals (&str) are just slices pointing to a specific point in the binary. This is
+     * also why they are immutable: it's because string literals are immutable references.
+     *
+     * String slices can also be passed as parameters in functions. For instance, let the following
+     * scope:
+     */
+
+    {
+        let a_string: String = String::from("Hey there, my friend!");
+
+        println!("{:?}", first_word_with_slicing(&a_string[4..]));
+    }
+
+    /* Previously we had on first_word_with_slicing() that the parameter word was a reference to a
+     * String, having thus `word: &String`. Now it is `word: &str`, but why? That's because &str
+     * allows for both references of Strings and sliced strings. */
+
 
 
 }

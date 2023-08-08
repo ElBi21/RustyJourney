@@ -10,7 +10,9 @@ Each file is commented with (sometimes unnecessary) docstring (I like them
 because of the formatting possibilities), so that each step is documented.
 
 This repo is based on the [Rust official book](https://doc.rust-lang.org/book).
-Go check it out if something is missing.
+Go check it out if something is missing. The book can also be found in the
+`Book` folder. It's just a `PDF` version of the site, nothing fancy. Might
+be helpful if you want to study offline as well.
 
 ## Journey's journal
 
@@ -268,3 +270,4 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
 }
 ```
  - Dangling pointers
+ - The `Slice` type
