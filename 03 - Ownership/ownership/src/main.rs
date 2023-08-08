@@ -5,6 +5,6 @@ use ownership::ownership;
 use references::references;
 
 fn main() {
-    // ownership();
+    ownership();
     references();
 }
