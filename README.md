@@ -276,3 +276,33 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
 ---
 
 ## 04 - Structs
+ - Creation of a **struct** with the `struct` keyword:
+```rust
+struct MyStruct {
+    a_string: String,
+    an_int: usize,
+    a_bool: bool,
+}
+
+let an_instance: MyStruct = MyStruct {
+    a_string = String::from("Hello World"),
+    an_int = 21,
+    a_bool = true,
+};
+```
+ - Borrowing of single attributes with the syntax `instance.field`;
+ - Tuples struct:
+```rust
+struct Point(i32, i32, i32);
+
+let point_in_quadrant_1: Point = Point(3, 4, 2);
+
+// To select one attribute
+println!("{}", point_in_quadrant_1.2);
+```
+ - Unit-Like structs:
+```rust
+struct UnitLike;
+
+let a_unit_like_instance: UnitLike = UnitLike;
+```
