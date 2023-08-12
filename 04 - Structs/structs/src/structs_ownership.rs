@@ -34,7 +34,18 @@ pub(crate) fn structs_ownership_and_examples() {
 
     /* Still, tuples have the problem that don't label their items: for us it's clear because we
      * know the context of the function, but it couldn't be obvious for other programmers.
+     *
+     * We can try to use structs to have a more concise program.
      */
+
+    {
+        let my_rectangle: Rectangle = Rectangle {
+            width: 36,
+            height: 40,
+        };
+
+        println!("The area with the struct is {:?}", get_area_rectangle(&my_rectangle));
+    }
 
 }
 
@@ -45,3 +56,10 @@ fn get_area(width: i32, height: i32) -> i32 {
 fn get_area_tuples(dimensions: (i32, i32)) -> i32 {
     dimensions.0 * dimensions.1
 }
+
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn get_area_rectangle(rectangle: &Rectangle) -> u32 { rectangle.width * rectangle.height }
