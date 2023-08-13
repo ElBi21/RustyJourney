@@ -306,3 +306,18 @@ struct UnitLike;
 
 let a_unit_like_instance: UnitLike = UnitLike;
 ```
+ - Discussion over the clearance of functions (with `tuples` and `structs`);
+ - Methods with the `impl` keyword:
+```rust
+struct Triangle {
+    base: u32,
+    height: u32,
+    is_rectangle: bool,
+}
+
+impl Triangle {
+    fn area(&self) -> u32 {
+        ( self.base * self.height ) / 2
+    }
+}
+```
