@@ -307,6 +307,7 @@ struct UnitLike;
 let a_unit_like_instance: UnitLike = UnitLike;
 ```
  - Discussion over the clearance of functions (with `tuples` and `structs`);
+ - The `Debug` trait and the `dbg!` macro;
  - Methods with the `impl` keyword:
 ```rust
 struct Triangle {
@@ -320,4 +321,24 @@ impl Triangle {
         ( self.base * self.height ) / 2
     }
 }
+```
+ - Encapsulation;
+ - The concept of *automatic referencing and deferencing*;
+ - Associated functions:
+```rust
+struct Triangle {
+    base: u32,
+    height: u32,
+};
+
+impl Triangle {
+    fn new(base: u32, height: u32) -> Self {
+        Self {
+            base,
+            height,
+        }
+    }
+}
+
+let a_triangle: Triangle = Triangle::new(40, 63);
 ```
