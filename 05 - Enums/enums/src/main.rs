@@ -223,7 +223,50 @@ fn main() {
          * specific way to handle null values, ensuring that they will always be treated carefully,
          * thus increasing the safety of Rust's code. A way to treat such cases is via the use of
          * the `match` keyword.
+         *
+         * The `match` keyword allows for the use of this powerful control flow construct, which
+         * allows to handle all the possible cases of an enumeration with ease. It may resemble a
+         * Finite State Machine (FSM): depending on the input X, the FSM will jump into different
+         * states, executing different functions depending on the case. For instance, let the
+         * following enumeration and its relative match statement:
          */
+
+        {
+            enum Euros {
+                Cent,
+                EuroCoin,
+                EuroBanknote,
+            }
+
+
+            fn print_values (euros: Euros) {
+                // Match works with an instance of the enum
+                match euros {
+                    Euros::Cent => {
+                        println!("0.01€ | 0.02€ | 0.05€ | 0.10€ | 0.20€ | 0.50€");
+                    },
+                    Euros::EuroCoin => {
+                        println!("1.00€ | 2.00€");
+                    },
+                    Euros::EuroBanknote => {
+                        println!("5.00€ | 10.00€ | 20.00€ | 50.00€ | 100.00€ | 200.00€ | 500.00€ (D)")
+                    }
+                }
+            }
+
+            /* Given different instances of the Euros enum, we can call the function and look at
+             * what happens:
+             */
+
+            let a_cent: Euros = Euros::Cent;
+            print_values(a_cent);
+
+            let an_euro_coin: Euros = Euros::EuroCoin;
+            print_values(an_euro_coin);
+
+            let an_euro_banknote: Euros = Euros::EuroBanknote;
+            print_values(an_euro_banknote);
+        }
 
     }
 }
