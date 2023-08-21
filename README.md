@@ -306,7 +306,7 @@ struct UnitLike;
 
 let a_unit_like_instance: UnitLike = UnitLike;
 ```
- - Discussion over the clearance of functions (with `tuples` and `structs`);
+ - Discussion over the clarity of functions (with `tuples` and `structs`);
  - The `Debug` trait and the `dbg!` macro;
  - Methods with the `impl` keyword:
 ```rust
