@@ -18,6 +18,8 @@
       <excludeFolder url="file://$MODULE_DIR$/Exercises/reverse_str/target" />
       <excludeFolder url="file://$MODULE_DIR$/04 - Structs/structs/target" />
       <excludeFolder url="file://$MODULE_DIR$/05 - Enums/enums/target" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/inspectionProfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/rustlings/target" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 (RustyJourney)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
