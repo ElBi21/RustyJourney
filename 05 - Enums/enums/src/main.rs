@@ -268,5 +268,32 @@ fn main() {
             print_values(an_euro_banknote);
         }
 
+        /* Match can also be useful to extract the value of an enum variant. Moreover, match can
+         * bind to the values of a particular variant. For instance, let's write again the Euros
+         * enum with a little modification: the cents and the coins have different designs depending
+         * on the state that minted it. We'll thus have two enums: one for the coins, and one for
+         * the states:
+         */
+
+        {
+            enum EUStates {
+                Italy,
+                France,
+                Belgium,
+                Germany,
+                Spain,
+                Portugal,
+                Netherlands,
+                Sweden,
+                // and so on...
+            }
+
+            enum Euros {
+                CentCoin(EUStates),
+                EuroCoin(EUStates),
+                EuroBanknote,
+            }
+        }
+
     }
 }
