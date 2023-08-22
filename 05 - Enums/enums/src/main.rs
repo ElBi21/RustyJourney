@@ -1,3 +1,4 @@
+use std::f32::consts::E;
 use std::net::Ipv6Addr;
 
 /// Rust allows the use of enumerations (or enums), which are a way to describe a type by
@@ -276,6 +277,7 @@ fn main() {
          */
 
         {
+            #[derive(Debug)]
             enum EUStates {
                 Italy,
                 France,
@@ -293,7 +295,122 @@ fn main() {
                 EuroCoin(EUStates),
                 EuroBanknote,
             }
+
+            fn return_values(coin: Euros) -> String {
+                match coin {
+                    Euros::CentCoin(state) => {
+                        println!("It comes from {:?}", state);
+                        String::from("0.01€ | 0.02€ | 0.05€ | 0.10€ | 0.20€ | 0.50€")
+                    }
+                    Euros::EuroCoin(state) => {
+                        println!("It comes from {:?}", state);
+                        String::from("1.00€ | 2.00€")
+                    }
+                    Euros::EuroBanknote => {
+                        String::from("5.00€ | 10.00€ | 20.00€ | 50.00€ | 100.00€ | 200.00€ | 500.00€ (D)")
+                    }
+                }
+            }
+
+            let a_coin: Euros = Euros::EuroCoin(EUStates::Belgium);
+            let another_coin: Euros = Euros::CentCoin(EUStates::Italy);
+            let a_banknote: Euros = Euros::EuroBanknote;
+
+            println!("{}", return_values(a_coin));
+            println!("{}", return_values(another_coin));
+            println!("{}", return_values(a_banknote));
         }
 
+        /* The match statement can also be used with the Option<T> enum. Since the match statement
+         * is exhaustive (meaning that wants all the possible variants have to be treated), we have
+         * to treat both the Some and the None variants.
+         */
+
+        {
+            fn add_one(a_number: Option<i32>) -> Option<i32> {
+                match a_number {
+                    Some(item) => Some(item + 1),
+                    None => None,
+                }
+            }
+
+            let number: Option<i32> = Some(5);
+            let empty: Option<i32> = None;
+
+            let update_number: Option<i32> = add_one(number);
+            let update_null: Option<i32> = add_one(empty);
+
+            println!("{:?} | {:?}", update_number, update_null);
+        }
+
+        /* In case an enum has too much possibilities, then we can handle them differently: we can
+         * specify a case that will be valid for every other case: say for instance that we have a
+         * function that rolls a dice: if we roll 1 we do something, if we roll 4 we do something
+         * else and, if we roll any other number, we do something different. We can do the
+         * following:
+         */
+
+        {
+            let my_roll: i32 = 3;
+
+            fn action_on_roll(roll: i32) {
+                match roll {
+                    1 => println!("Lucky one! Roll again"),
+                    4 => println!("Unlucky! Go back of 4 spaces"),
+                    any_other_number => println!("Way to go! Move your player of {} spaces",
+                                                        any_other_number),
+                }
+            }
+
+            action_on_roll(my_roll);
+        }
+
+        /* In this case, we needed the value of the roll, since `my_roll` won't be available
+         * anymore; if we didn't need it we would've used the `_`, which is a catch-all symbol. This
+         * symbol will automatically tell Rust that we won't use the value that it holds, thus it
+         * can disregard it. An example follows:
+         */
+
+        {
+            let my_roll: i32 = 5;
+
+            fn action_on_roll(roll: i32) {
+                match roll {
+                    1 => println!("Lucky one! Roll again"),
+                    4 => println!("Unlucky! Go back of 4 spaces"),
+                    _ => println!("Way to go! You can move of one space"),
+                }
+            }
+
+            action_on_roll(my_roll);
+        }
+
+        /* In some cases the match statement can be a bit wordy. The `if let` statement allows us to
+         * better handle cases where we more specifically care about the value. For instance,
+         * consider this match statement:
+         */
+
+        {
+            let configurable_max: Option<u8> = Some(3u8);
+            match configurable_max {
+                Some(max) => println!("The max is {}", max),
+                _ => (),
+            }
+
+            /* With the match statement we have to handle all the cases: this means that we also
+             * have to handle the _ case. This just adds unnecessary lines of code to the project.
+             * This can be also done with the `if let` statement:
+             */
+
+            {
+                let configurable_max: Option<u8> = Some(3u8);
+
+                if let Some(given_max) = configurable_max {
+                    println!("The max value exists, and it's {}", given_max);
+                } else {    // We can also add an else to treat all the other cases
+                    println!("The max value doesn't exist");
+                }
+            }
+        }
     }
 }
