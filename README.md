@@ -342,3 +342,11 @@ impl Triangle {
 
 let a_triangle: Triangle = Triangle::new(40, 63);
 ```
+
+---
+
+## 05 - Enums
+
+---
+
+## 06 - Packages, Crates and Modules
