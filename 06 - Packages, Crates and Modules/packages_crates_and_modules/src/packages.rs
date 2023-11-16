@@ -1,3 +1,5 @@
+use crate::a_module;
+
 /// **Packages and Crates**
 ///
 /// In Rust, a **crate** is the smallest amount of code that is considered at a time, during compile
@@ -13,9 +15,13 @@
 /// A crate gets compiled with the following steps:
 ///  1. The compiler looks for a `src/lib.rs` file (if the crate is a library crate) or a
 ///     `src/main.rs` file (if the crate is a binary crate);
-///  2. When it finds one, it looks for any `mod <package_name>` inside the file. The `mod` keyword
-///     allows Rust to recognise a **module**. An example follows, with an example module named
-///     "house":
+///  2. When it finds one, it looks for any `mod <package_name>` inside the///root* file. The `mod`
+///     keyword allows Rust to recognise a **module**. Rust will find for the specific file, so if
+///     we type `mod my_module;`, then there must either be:
+///      - a `my_module.rs` file;
+///      - a folder named `my_module` where inside there is a `mod.rs` file.
+///     All the modules specified in the `main.rs` file can be used across the whole crate.
+///     An example follows, with an example module named "house":
 ///
 /// → File Path:
 /// ```
@@ -26,7 +32,7 @@
 ///       ├ main.rs
 ///       ├ house.rs
 ///       └ kitchen
-///          └ sink.rs
+///          └ mod.rs
 /// ```
 ///
 /// → `main.rs` (Case of the module's core inside the main file)
@@ -45,9 +51,10 @@
 /// → `house.rs` (Case of the module's core outside the main file)
 /// ```rust
 /// mod house;
+/// mod kitchen;
 ///
 /// fn new_house() {
-///     // Code...
+///     kitchen::clean_sink();
 /// }
 /// ```
 ///
@@ -65,6 +72,32 @@
 /// // Now we can use freely the drain() function, like this:
 /// drain();
 /// ```
-fn packages() {
-
+pub(crate) fn modules_func() {
+    {
+        let an_integer: i32 = 16;
+        a_module::number_adder(an_integer);
+    }
 }
+
+/// When using modules we might have a situation of multiple modules nested in each other. We can
+/// refer to them with a notation similar to the one used in OOP. For instance, let us assume that we
+/// have the following crate tree:
+///
+/// ```txt
+/// crate
+///  ├─ module_a
+///  │    └ module_c
+///  └─ module_b
+/// ```
+///
+/// In this case, `module_a` is considered the **parent** of `module_c`, while `module_a` and
+/// `module_b` are said to be **siblings**. `module_c` is called **child** of `module_a`.
+///
+///
+/// When referring to modules, the first time that we run a program with a self made module we will
+/// probably get an error, but why is that? That's because usually in Rust, if there is no
+/// specification, a module is considered **private**. A solution could be to use the `pub` keyword in
+/// front of the declaration of the module, but it won't work. The error that we would get would
+/// always be that the function inside our module is private. What about using `pub` also in front
+/// of the function?
+///

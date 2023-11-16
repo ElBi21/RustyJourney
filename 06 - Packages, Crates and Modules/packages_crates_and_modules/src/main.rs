@@ -1,4 +1,5 @@
-mod packages;
+pub mod packages;
+pub mod a_module;
 
 /// As one proceeds in writing a project, it may be normal to want to split the code into multiple
 /// files, may it be for clearance, for keeping order, or for the need of modularity. Rust allows
@@ -15,5 +16,9 @@ mod packages;
 ///                         paths in the code;
 ///  - **Paths**: The way of naming an item (be it a function, a variable, ...).
 fn main() {
-    println!("Hello, world!");
+    {
+        packages::modules_func();
+    }
 }
+
+
