@@ -6,7 +6,7 @@ use std::net::Ipv6Addr;
 fn main() {
     /* Structs allow us to make our custom data types, but enumerations allow us to make a kind of
      * "super-type" that contains multiple types. For instance, IP addresses: there are two types of
-     * IP address: V4 and v6. If we had to make a collection of IP addresses, we would make an
+     * IP address: V4 and V6. If we had to make a collection of IP addresses, we would make an
      * enumeration with all the possible IP types. Indeed, the enumeration would be similar to a
      * super-type, because it brings together multiple types. Let's make an example:
      */
@@ -38,7 +38,7 @@ fn main() {
             }
 
             // Specific parameter
-            fn check_v6_address(ip_address: &IPAddress) {
+            fn check_v6_address(ip_address: &IPAddress::V6) {
                 // Some code here...
             }
 

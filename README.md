@@ -74,7 +74,7 @@ let my_number: i32 = 21;
   - `cargo new <project_name>`: create a new project with name `project_name`;
   - `cargo run`: compiles the project and runs it;
   - `cargo build`: creates an executable of the project and runs it;
-  - `cargo update`: updates all the needed dependencies for a project;
+  - `cargo update`: updates all the needed dependencies for a project.
 
 ---
 
@@ -270,8 +270,8 @@ let a_number: i32 = if my_condition { 4 } else { 5 };
     let my_mut_ref: &mut String = &mut another_string;
 }
 ```
- - Dangling pointers
- - The `Slice` type
+ - Dangling pointers;
+ - The `Slice` type.
 
 ---
 
@@ -342,11 +342,51 @@ impl Triangle {
 
 let a_triangle: Triangle = Triangle::new(40, 63);
 ```
-
+ - Use of the `debug` trait on structs:
+```rust
+#[derive(Debug)]
+struct Triangle {
+    base: i32,
+    height: i32,
+}
+```
 ---
 
 ## 05 - Enums
 
+ - Creation of an **enumeration** with `enum`:
+```rust
+enum TransportProtocol {
+    UDP,
+    TCP,
+}
+
+let tcp_protocol: TransportProtocol = TransportProtocol::TCP;
+```
+ - Specification of types for the variants of the enumeration;
+ - Use of `enums` with `structs`:
+```rust
+enum IPAddrVersion {
+    V4(u8, u8, u8, u8),
+    V6(String),
+}
+
+struct IPAddress {
+    version: IPAddrVersion,
+    address: String,
+}
+```
+ - Use of `impl` with also enumeration types;
+ - The "null" value, implemented with the `Option<T>` enumeration:
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+ - Use of `match` with the variants of the enumerations;
+ - Extraction of the values of an enumeration with the `match` statement;
+ - Use of the **wildcard** `_` for pointing to unused variants of the enumeration.
 ---
 
 ## 06 - Packages, Crates and Modules
