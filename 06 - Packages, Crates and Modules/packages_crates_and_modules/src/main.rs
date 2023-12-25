@@ -2,7 +2,7 @@ extern crate core;
 
 pub mod packages;
 pub mod a_module;
-mod another_module;
+pub mod another_module;
 
 /// As one proceeds in writing a project, it may be normal to want to split the code into multiple
 /// files, may it be for clearance, for keeping order, or for the need of modularity. Rust allows

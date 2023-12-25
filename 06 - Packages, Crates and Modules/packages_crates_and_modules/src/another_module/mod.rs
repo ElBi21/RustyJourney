@@ -4,6 +4,9 @@ fn increments(int: i32) -> i32 {
 
 pub mod operations {
     pub fn custom_addition(x: i32, y: i32) -> i32 {
+        /* Here we can use the `super` keyword to call a function that is in the parent scope of the
+         * current module
+         */
         super::increments(x) + y
     }
 }
@@ -28,6 +31,11 @@ impl Equation {
     }
 }
 
+/// Some types of numbers:
+///  - Integer
+///  - Rational
+///  - Float
+///  - Complex
 #[derive(Debug)]
 enum NumberType {
     Integer,
@@ -36,6 +44,11 @@ enum NumberType {
     Complex,
 }
 
+/// Generates a [NumberType] from a [i32] integer, where:
+///  - 1 => Integer;
+///  - 2 => Rational;
+///  - 3 => Float;
+///  - Anything else => Complex
 fn get_num_type(num_type: i32) -> NumberType {
     match num_type {
         1 => NumberType::Integer,

@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/04 - Structs/structs/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/05 - Enums/enums/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/06 - Packages, Crates and Modules/packages_crates_and_modules/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/07 - Collections/collections/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/01 - Basics/basica/target" />
       <excludeFolder url="file://$MODULE_DIR$/01 - Basics/basics/target" />
@@ -22,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/inspectionProfiles" />
       <excludeFolder url="file://$MODULE_DIR$/06 - Packages, Crates and Modules/packages_crates_and_modules/target" />
       <excludeFolder url="file://$MODULE_DIR$/rustlings/target" />
+      <excludeFolder url="file://$MODULE_DIR$/07 - Collections/collections/target" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 (RustyJourney)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

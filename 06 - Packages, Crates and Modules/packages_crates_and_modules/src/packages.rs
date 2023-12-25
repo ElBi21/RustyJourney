@@ -1,6 +1,13 @@
 use crate::a_module;
 use crate::another_module;
-use crate::another_module::Equation;
+
+// We can also use a more concise syntax, such as the following
+// use crate::{a_module, another_module};
+
+// If we ever wanted to import everything from a package, we would use the wildcard `*`
+
+// We can rename the imported items with the `as` keyword, followed by a name
+use crate::another_module::Equation as Eqtn;
 
 /// **Packages and Crates**
 ///
@@ -87,7 +94,7 @@ pub(crate) fn modules_func() {
     }
 
     {
-        let equation: Equation = Equation::new(2, String::from("+"));
+        let equation: Eqtn = Eqtn::new(2, String::from("+"));
         println!("{:?}", equation);
     }
 }

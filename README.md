@@ -23,7 +23,8 @@ be helpful if you want to study offline as well.
 4. [04 - Structs](#04---structs)
 5. [05 - Enumerations](#05---enumerations)
 6. [06 - Packages, Crates and Modules](#06---packages-crates-and-modules)
-7. [Exercises](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/Exercises.md)
+7. [07 - Collections](#07---collections)
+8. [Exercises](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/Exercises.md)
     - [E01](https://github.com/ElBi21/RustyJourney/tree/main/Exercises/reverse_str) - `reverse_str` (Difficulty: ⭐)
 
 ---
@@ -392,3 +393,7 @@ enum Option<T> {
 ---
 
 ## 06 - Packages, Crates and Modules
+
+---
+
+## 07 - Collections
