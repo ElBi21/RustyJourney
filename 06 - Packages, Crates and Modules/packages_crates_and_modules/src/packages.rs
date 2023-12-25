@@ -1,4 +1,6 @@
 use crate::a_module;
+use crate::another_module;
+use crate::another_module::Equation;
 
 /// **Packages and Crates**
 ///
@@ -77,27 +79,38 @@ pub(crate) fn modules_func() {
         let an_integer: i32 = 16;
         a_module::number_adder(an_integer);
     }
+
+    {
+        let an_integer: i32 = 31;
+        let result: i32 = another_module::operations::custom_addition(an_integer, 16);
+        println!("Result of nested modules: {}", result);
+    }
+
+    {
+        let equation: Equation = Equation::new(2, String::from("+"));
+        println!("{:?}", equation);
+    }
 }
 
-/// When using modules we might have a situation of multiple modules nested in each other. We can
-/// refer to them with a notation similar to the one used in OOP. For instance, let us assume that we
-/// have the following crate tree:
-///
-/// ```txt
-/// crate
-///  ├─ module_a
-///  │    └ module_c
-///  └─ module_b
-/// ```
-///
-/// In this case, `module_a` is considered the **parent** of `module_c`, while `module_a` and
-/// `module_b` are said to be **siblings**. `module_c` is called **child** of `module_a`.
-///
-///
-/// When referring to modules, the first time that we run a program with a self made module we will
-/// probably get an error, but why is that? That's because usually in Rust, if there is no
-/// specification, a module is considered **private**. A solution could be to use the `pub` keyword in
-/// front of the declaration of the module, but it won't work. The error that we would get would
-/// always be that the function inside our module is private. What about using `pub` also in front
-/// of the function?
-///
+/* When using modules we might have a situation of multiple modules nested in each other. We can
+ * refer to them with a notation similar to the one used in OOP. For instance, let us assume that we
+ * have the following crate tree:
+ *
+ * ```txt
+ * crate
+ *  ├─ module_a
+ *  │    └ module_c
+ *  └─ module_b
+ * ```
+ *
+ * In this case, `module_a` is considered the **parent** of `module_c`, while `module_a` and
+ * `module_b` are said to be **siblings**. `module_c` is called **child** of `module_a`.
+ *
+ *
+ * When referring to modules, the first time that we run a program with a self made module we will
+ * probably get an error, but why is that? That's because usually in Rust, if there is no
+ * specification, a module is considered **private**. A solution could be to use the `pub` keyword in
+ * front of the declaration of the module, but it won't work. The error that we would get would
+ * always be that the function inside our module is private. What about using `pub` also in front
+ * of the function?
+ */

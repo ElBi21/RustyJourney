@@ -1,3 +1,5 @@
+extern crate core;
+
 pub mod packages;
 pub mod a_module;
 mod another_module;
