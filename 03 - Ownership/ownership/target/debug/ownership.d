@@ -1,0 +1,1 @@
+/Users/leonardo/Desktop/Personale/RustyJourney/03\ -\ Ownership/ownership/target/debug/ownership: /Users/leonardo/Desktop/Personale/RustyJourney/03\ -\ Ownership/ownership/src/main.rs /Users/leonardo/Desktop/Personale/RustyJourney/03\ -\ Ownership/ownership/src/ownership.rs /Users/leonardo/Desktop/Personale/RustyJourney/03\ -\ Ownership/ownership/src/references.rs

@@ -1,0 +1,1 @@
+/Users/leonardo/Desktop/Personale/RustyJourney/04\ -\ Structs/structs/target/debug/structs: /Users/leonardo/Desktop/Personale/RustyJourney/04\ -\ Structs/structs/src/main.rs /Users/leonardo/Desktop/Personale/RustyJourney/04\ -\ Structs/structs/src/structs_general.rs /Users/leonardo/Desktop/Personale/RustyJourney/04\ -\ Structs/structs/src/structs_ownership.rs
