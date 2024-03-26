@@ -380,7 +380,7 @@ struct IPAddress {
 }
 ```
  - Use of `impl` with also enumeration types;
- - The "null" value, implemented with the `Option<T>` enumeration:
+ - The "`null`" value, implemented with the `Option<T>` enumeration:
 ```rust
 enum Option<T> {
     Some(T),

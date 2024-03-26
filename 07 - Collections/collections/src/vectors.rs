@@ -17,15 +17,16 @@ pub fn vectors() {
             println!("{}", item)
         }
 
-        // Vectors can also be modified, since we can both push and pop elements out of it. For instance:
+        // Vectors can also be modified, since we can both push and pop elements out of it. For
+        // instance:
 
         v.push(4);
         v.push(37);
         v.push(49);
 
-        /* If we want to read an element of the vector, we can either use the indexing way or the get() method: the
-         * first one allows us to read an element by referencing it, while the second one returns an Option<T>. We'll
-         * have then the following:
+        /* If we want to read an element of the vector, we can either use the indexing way or the
+         * get() method: the first one allows us to read an element by referencing it, while the
+         * second one returns an Option<T>. We'll have then the following:
          */
 
         let an_element: &i32 = &v[2];
@@ -55,11 +56,12 @@ pub fn vectors() {
          * }
          *
          *
-         *  Would it work? Would the Rust compiler actually compile it? It won't. This is because vectors are stored in
-         *  a way such that each item is placed next to the other. If a new item must be added to the vector but in a
-         *  point in memory there isn't enough space, then Rust must move all the vector to another place in memory. If
-         *  that was the case, then the reference would just point to a deallocated point in the memory, resulting in an
-         *  error. In order to avoid that, Rust enforces this rule.
+         *  Would it work? Would the Rust compiler actually compile it? It won't. This is because
+         *  vectors are stored in a way such that each item is placed next to the other. If a new
+         *  item must be added to the vector but in a point in memory there isn't enough space, then
+         *  Rust must move all the vector to another place in memory. If that was the case, then the
+         *  reference would just point to a deallocated point in the memory, resulting in an error.
+         *  In order to avoid that, Rust enforces this rule.
          */
 
         {
@@ -75,16 +77,17 @@ pub fn vectors() {
                 *i += 2;
             }
 
-            // The previous for loop adds 2 to each element of the vector. We can see the change by printing the vector:
+            // The previous for loop adds 2 to each element of the vector. We can see the change by
+            // printing the vector:
             println!("Modified vector: {:?}", v);
 
-            /*  The * operator used before i in the second for loop is called dereferencing operator. It will be further
-             *  explored later on
+            /*  The * operator used before i in the second for loop is called de-referencing
+             *  operator. It will be further explored later on
              */
         }
 
-        /* We said that vectors can only store data of the same type: we can work around it by using enums: let the
-         * following code:
+        /*  We said that vectors can only store data of the same type: we can work around it by using
+         *  enums: let the following code:
          */
 
         {
@@ -106,8 +109,8 @@ pub fn vectors() {
                 println!("{:?}", i);
             }
 
-            /* Of course, as any other data structure in Rust, once a vector goes out of scope, it gets deleted from the
-             * memory
+            /*  Of course, as any other data structure in Rust, once a vector goes out of scope, it
+             *  gets deleted from the memory
              */
         }
     }
